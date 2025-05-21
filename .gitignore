@@ -1,0 +1,17 @@
+# Python缓存文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyCharm IDE配置目录
+.idea/
+
+# pytest缓存目录
+.pytest_cache/
+
+# Python虚拟环境
+.venv/
+venv/
+
+results/
+report.html
