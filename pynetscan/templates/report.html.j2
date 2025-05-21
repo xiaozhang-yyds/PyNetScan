@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>PyNetScan 扫描报告</title>
+    <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    h1 { color: #333; }
+    .host { border: 1px solid #ddd; margin: 20px 0; padding: 15px; border-radius: 5px; }
+    .host-header { background: #f5f5f5; padding: 10px; margin: -15px -15px 15px; border-radius: 5px 5px 0 0; }
+    .port-list { margin-left: 20px; }
+    .vuln-item { color: #c00; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PyNetScan 扫描报告</h1>
+        <p>扫描目标: {{ scan_info.target }}</p>
+        
+        {% for host in hosts %}
+        <div class="host">
+            <div class="host-header">
+                <h2>主机: {{ host.ip }}</h2>
+                {% if host.os %}<p>操作系统: {{ host.os }}</p>{% endif %}
+            </div>
+            
+            <h3>开放端口</h3>
+            <div class="port-list">
+                {% for port in host.open_ports %}<div>{{ port }}</div>{% endfor %}
+            </div>
+            
+            {% if host.vulns %}
+            <h3>发现漏洞</h3>
+            <div class="vuln-list">
+                {% for vuln in host.vulns %}
+                <div class="vuln-item">{{ vuln }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "scan_info": {
+    "target": "1.2.3.0/24"
+  },
+  "hosts": [
+    {
+      "ip": "1.2.3.4",
+      "open_ports": [
+        80
+      ],
+      "os": "Linux",
+      "vulns": [
+        "CVE-1"
+      ]
+    }
+  ]
+}

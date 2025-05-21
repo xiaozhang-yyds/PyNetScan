@@ -8,18 +8,18 @@ from importlib.util import find_spec
 # 导入各功能模块
 from . import host_discovery, port_scan, os_detect, vuln_scan, report
 
-# ----------★ 自定义 ArgumentParser，让错误提示更友好 ★ ----------
+# ---------- 自定义 ArgumentParser，让错误提示更友好  ----------
 class FriendlyParser(argparse.ArgumentParser):
     def error(self, message):
         sys.stderr.write(f"\033[31m[!] 参数错误：{message}\033[0m\n\n")
         self.print_help(sys.stderr)
         sys.exit(2)
 
-# ----------★ 构建 CLI 参数解析器 ----------
+# ---------- 构建 CLI 参数解析器 ----------
 def build_parser() -> argparse.ArgumentParser:
     p = FriendlyParser(
         prog="PyNetScan",
-        description="PyNetScan - 轻量级网络安全扫描器",
+        description="PyNetScan - 网络安全扫描器",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     p.add_argument("-t", "--target", required=False,
